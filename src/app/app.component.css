@@ -1,0 +1,14 @@
+.main-div {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.custom-title {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.card-container {
+    margin: 10px 0;
+}
