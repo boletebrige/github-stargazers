@@ -1,22 +1,26 @@
 <div class="main-div">
-    <form class="example-form">
+    <form (ngSubmit)="onSubmit()" #repoForm="ngForm">
         <table class="example-full-width" cellspacing="0">
             <tr>
                 <td>
                     <md-form-field class="example-full-width">
-                        <input mdInput placeholder="First name" [(ngModel)]="test.input" #input="ngModel">
+                        <input mdInput placeholder="Username" 
+                        required
+                        name="user" [(ngModel)]="test.user" #user="ngModel">
                     </md-form-field>
                 </td>
                 <td>
                     <md-form-field class="example-full-width">
-                        <input mdInput placeholder="Long Last Name ">
+                        <input mdInput placeholder="Reponame"
+                        required
+                        name="repo" [(ngModel)]="test.repo" #repo="ngModel">
                     </md-form-field>
                 </td>
                 <td>
                     &nbsp;&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button md-raised-button color="primary" (click)="klikFunkcija()">Primary</button>
+                    <button md-raised-button color="primary" type="submit" [disabled]="!repoForm.form.valid" (click)="onSubmit(); repoForm.reset()">Primary</button>
                 </td>
             </tr>
         </table>

@@ -13,18 +13,28 @@ export class AppComponent {
   initialArr = [
     {user: 'angular', repo: 'angular'},
     {user: 'vuejs', repo: 'vue'},
-    {user: 'facebook', repo: 'react'}
+    {user: 'facebook', repo: 'react'},
+    {user: 'jashkenas', repo: 'backbone'},
+    {user: 'tastejs', repo: 'todomvc'},
+    {user: 'Polymer', repo: 'polymer'}
   ];
   dataArr = [];
   test = {
-    input: null
+    user: null,
+    repo: null
   }
   constructor(private http: Http){
   
   }
 
-  klikFunkcija(){
-    console.log(this.test.input);
+  onSubmit(){
+    console.log(this.test.user);
+    console.log(this.test.repo);
+    this.http.get('https://api.github.com/repos/' + this.test.user + '/'+ this.test.repo)
+    .subscribe(data => {
+        this.dataArr.push(data.json());
+        this.dataArr.sort(function(a, b){return b.stargazers_count- a.stargazers_count})
+    });
   }
   
   ngOnInit() {
