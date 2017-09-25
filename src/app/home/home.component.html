@@ -1,0 +1,52 @@
+<div  class="main-div">
+    <form (ngSubmit)="onSubmit()" #repoForm="ngForm">
+        <div class="example-full-width" cellspacing="0">
+            <md-grid-list cols="5">
+                    <md-grid-tile colspan="2" rowspan="1">
+                        <md-form-field class="example-full-width">
+                            <input mdInput placeholder="Username" 
+                            required
+                            name="user" [(ngModel)]="input.user" #user="ngModel">
+                        </md-form-field>
+                    </md-grid-tile>
+                    <md-grid-tile colspan="2" rowspan="1">
+                        <md-form-field class="example-full-width">
+                            <input mdInput placeholder="Reponame"
+                            required
+                            name="repo" [(ngModel)]="input.repo" #repo="ngModel">
+                        </md-form-field>
+                    </md-grid-tile>
+                    <md-grid-tile colspan="1" rowspan="1">
+                            <button md-raised-button color="primary" type="submit" [disabled]="!repoForm.form.valid" (click)="onSubmit(); repoForm.reset()">Primary</button>
+                    </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </form>
+    <md-list-item *ngFor="let repo of dataArr">
+        <md-card class="card-container">
+            <md-grid-list cols="4" rowHeight="150px">
+                <div>
+                    <md-grid-tile colspan="1" rowspan="1">
+                            <img md-card-image [src]="repo.owner.avatar_url" alt="Photo of a Shiba Inu">
+                            <div class="shadow-overlay"></div>
+                            <div class="triangle"></div>
+                    </md-grid-tile>
+                </div>
+                <md-grid-tile colspan="3" rowspan="1">
+                    <div class="card-content">
+                        <md-card-header>
+                            <md-card-title>
+                                <div class="custom-title"><a target="_blank" [href]="repo.html_url">{{ repo.name }}</a></div>
+                            </md-card-title>
+                            <md-card-subtitle>
+                                <p>{{ repo.description}}</p>
+                                <p class="date"><small><strong>Created:</strong> {{ repo.created_at | date }}<strong>Last Update:</strong> {{ repo.updated_at | date }}</small></p>
+                            </md-card-subtitle>
+                            <div class="stars"><p><span>{{ repo.stargazers_count }}</span><md-icon>star</md-icon></p></div>
+                        </md-card-header>
+                    </div>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card >
+    </md-list-item>
+</div>

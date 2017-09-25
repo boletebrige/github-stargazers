@@ -4,26 +4,37 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule, MdToolbarModule, MdIconModule, MdTabsModule } from '@angular/material';
+import { DatePipe } from '@angular/common';
 
+import { appRouting } from './app.routing';
 import { AppComponent } from './app.component';
+import { appHeader } from './layout/appHeader.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    appHeader,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     BrowserAnimationsModule,
+    appRouting,
     MdButtonModule,
     MdCheckboxModule,
     MdChipsModule,
     MdCardModule,
     MdGridListModule,
     MdListModule,
-    MdInputModule
+    MdInputModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

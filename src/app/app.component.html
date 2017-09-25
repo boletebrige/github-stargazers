@@ -1,46 +1,6 @@
-<div class="main-div">
-    <form (ngSubmit)="onSubmit()" #repoForm="ngForm">
-        <table class="example-full-width" cellspacing="0">
-            <tr>
-                <td>
-                    <md-form-field class="example-full-width">
-                        <input mdInput placeholder="Username" 
-                        required
-                        name="user" [(ngModel)]="test.user" #user="ngModel">
-                    </md-form-field>
-                </td>
-                <td>
-                    <md-form-field class="example-full-width">
-                        <input mdInput placeholder="Reponame"
-                        required
-                        name="repo" [(ngModel)]="test.repo" #repo="ngModel">
-                    </md-form-field>
-                </td>
-                <td>
-                    &nbsp;&nbsp;&nbsp;
-                </td>
-                <td>
-                    <button md-raised-button color="primary" type="submit" [disabled]="!repoForm.form.valid" (click)="onSubmit(); repoForm.reset()">Primary</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <md-list-item *ngFor="let repo of dataArr">
-        <div class="card-container">
-            <md-card>
-                <md-card-header>
-                    <img md-card-avatar [src]="repo.owner.avatar_url">
-                    <div class="custom-title">
-                        {{ repo.name }}
-                    </div>
-                </md-card-header>
-                
-                <md-card-content>
-                {{ repo.stargazers_count }}
-                </md-card-content>
-            </md-card>
-        </div>
-    </md-list-item>
+<div>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
 </div>
 
 
