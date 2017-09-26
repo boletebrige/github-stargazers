@@ -9,9 +9,11 @@ import { DatePipe } from '@angular/common';
 
 import { appRouting } from './app.routing';
 import { AppComponent } from './app.component';
-import { appHeader } from './layout/appHeader.component';
-import { HomeComponent } from './home/home.component';
-import { GitCard } from './layout/components/gitCard.component';
+import { appHeader } from './layout/components/appHeader/appHeader.component';
+import { HomeComponent } from './layout/home/home.component';
+import { ProfileComponent } from './layout/profile/profile.component';
+import { GitCard } from './layout/components/gitCard/gitCard.component';
+import { RepoInput } from './layout/components/repoInput/repoInput.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { GitCard } from './layout/components/gitCard.component';
     AppComponent,
     appHeader,
     HomeComponent,
-    GitCard
+    GitCard,
+    RepoInput,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<div  class="main-div">
+    <h1 class="mat-display-1">Add repository to list</h1>
+    <repo-input (onRepo)="onSubmit($event)"></repo-input>
+    <md-tab-group (selectChange)="onSelectChange($event)">
+        <md-tab label="Frontend JS frameworks">
+            <md-list-item *ngFor="let repo of tempData">
+                <git-card [repo]="repo"></git-card>
+            </md-list-item>
+        </md-tab>
+        <md-tab label="Web app frameworks">
+                <md-list-item *ngFor="let repo of tempData">
+                    <git-card [repo]="repo"></git-card>
+                </md-list-item>
+        </md-tab>
+        <md-tab label="JS game engine">
+            <md-list-item *ngFor="let repo of tempData">
+                <git-card [repo]="repo"></git-card>     
+            </md-list-item>
+        </md-tab>
+        <md-tab label="Text editors">
+            <md-list-item *ngFor="let repo of tempData">
+                <git-card [repo]="repo"></git-card>
+            </md-list-item>
+        </md-tab>
+    </md-tab-group>
+</div>

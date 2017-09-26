@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Frontend } from '../data/frontend';
-import { Web } from '../data/web';
-import { Game } from '../data/game';
-import { Editor } from '../data/editor';
+import { Frontend } from '../../data/frontend';
+import { Web } from '../../data/web';
+import { Game } from '../../data/game';
+import { Editor } from '../../data/editor';
 
 @Component({
     selector: 'home-component',
@@ -24,14 +24,10 @@ export class HomeComponent {
     editorArr = Editor;
     editorData = [];
     tempData = [];
-    input = {
-      user: null,
-      repo: null
-    }
     constructor(private http: Http){
     }
-    onSubmit(){
-      this.http.get('https://api.github.com/repos/' + this.input.user + '/'+ this.input.repo)
+    onSubmit(event){
+      this.http.get('https://api.github.com/repos/' + event.user + '/'+ event.repo)
       .subscribe(data => {
           this.tempData.push(data.json());
           this.tempData.sort(function(a, b){return b.stargazers_count- a.stargazers_count})

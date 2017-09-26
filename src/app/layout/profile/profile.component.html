@@ -1,0 +1,31 @@
+<div class="profile-main" *ngIf="dataLoaded && reposLoaded">
+    <!-- <pre>{{ profileRepos | json }}</pre> -->
+    <md-card class="profile-card">
+        <!-- <md-card-header>
+            <md-card-title>Shiba Inu</md-card-title>
+            <md-card-subtitle>Dog Breed</md-card-subtitle>
+        </md-card-header> -->
+        <img md-card-image [src]="profileData.avatar_url" alt="avatar" height="240px">
+        <md-card-content>
+            <md-card-title>{{ profileData.name }}</md-card-title>
+            <md-card-subtitle><strong>Created at: </strong>{{ profileData.created_at | date }}</md-card-subtitle>
+            <p><strong>Public repos: </strong> {{ profileData.public_repos }}</p>
+        </md-card-content>
+        <md-card-actions>
+            <a md-button [href]="profileData.html_url">Visit Profile</a>
+        </md-card-actions>
+    </md-card>
+    <md-list>
+        <md-list-item *ngFor="let item of profileRepos">
+            <div *ngIf="!item.fork">
+                <h4 md-line>{{ item.name }}</h4>
+                <h4 md-line>{{ item.html_url }}</h4>
+                <h4 md-line>{{ item.description }}</h4>
+                <h4 md-line>{{ item.fork }}</h4>
+                <h4 md-line>{{ item.commits_url }}</h4>
+                <h4 md-line>{{ item.language }}</h4>
+                <md-divider></md-divider>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>

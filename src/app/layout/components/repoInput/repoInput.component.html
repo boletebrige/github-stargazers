@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #repoForm="ngForm">
+    <md-form-field class="example-full-width">
+        <input mdInput placeholder="Username" 
+        required
+        name="user" [(ngModel)]="input.user" #user="ngModel">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input mdInput placeholder="Reponame"
+        required
+        name="repo" [(ngModel)]="input.repo" #repo="ngModel">
+    </md-form-field>
+    <button md-icon-button color="primary" type="submit" [disabled]="!repoForm.form.valid" (click)="onSubmit(); repoForm.reset()"><md-icon class="md-24" aria-label="Example icon-button with a heart icon">send</md-icon></button>
+</form>
