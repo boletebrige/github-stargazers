@@ -1,5 +1,6 @@
-# Task
-## Don't load reload data
+# Github Stargazers
+> Angular application that lists popular repositories from GitHub using GitHub REST API v3
+
 # Material
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.

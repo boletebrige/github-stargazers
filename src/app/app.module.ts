@@ -11,13 +11,15 @@ import { appRouting } from './app.routing';
 import { AppComponent } from './app.component';
 import { appHeader } from './layout/appHeader.component';
 import { HomeComponent } from './home/home.component';
+import { GitCard } from './layout/components/gitCard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     appHeader,
-    HomeComponent
+    HomeComponent,
+    GitCard
   ],
   imports: [
     BrowserModule,
