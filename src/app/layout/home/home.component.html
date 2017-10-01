@@ -6,23 +6,31 @@
     <md-tab-group (selectChange)="onSelectChange($event)">
         <md-tab label="Frontend JS frameworks">
             <md-list-item *ngFor="let repo of tempData">
-                <git-card [repo]="repo"></git-card>
+                <git-card [repo]="repo" *ngIf="tempData.length;">
+                </git-card>
             </md-list-item>
+            <div class="spinner"><md-spinner *ngIf="!tempData.length;"></md-spinner></div>
         </md-tab>
         <md-tab label="Web app frameworks">
-                <md-list-item *ngFor="let repo of tempData">
-                    <git-card [repo]="repo"></git-card>
-                </md-list-item>
+            <md-list-item *ngFor="let repo of tempData">
+                <git-card [repo]="repo" *ngIf="tempData.length;">
+                </git-card>
+            </md-list-item>
+            <div class="spinner"><md-spinner *ngIf="!tempData.length;"></md-spinner></div>
         </md-tab>
         <md-tab label="JS game engine">
             <md-list-item *ngFor="let repo of tempData">
-                <git-card [repo]="repo"></git-card>     
+                <git-card [repo]="repo" *ngIf="tempData.length;">
+                </git-card>
             </md-list-item>
+            <div class="spinner"><md-spinner *ngIf="!tempData.length;"></md-spinner></div>
         </md-tab>
         <md-tab label="Text editors">
             <md-list-item *ngFor="let repo of tempData">
-                <git-card [repo]="repo"></git-card>
+                <git-card [repo]="repo" *ngIf="tempData.length;">
+                </git-card>
             </md-list-item>
+            <div class="spinner"><md-spinner *ngIf="!tempData.length;"></md-spinner></div>
         </md-tab>
     </md-tab-group>
 </div>

@@ -1,7 +1,7 @@
 <div class="profile-main" *ngIf="dataLoaded && reposLoaded">
     <!-- <pre>{{ profileRepos | json }}</pre> -->
     <md-card class="profile-card">
-        <img md-card-image [src]="profileData.avatar_url" alt="avatar" height="335px">
+        <img md-card-image [src]="profileData.avatar_url" alt="Profile picture">
         <md-card-content>
             <md-card-title>{{ profileData.name }}</md-card-title>
             <md-card-subtitle><strong>Created at: </strong>{{ profileData.created_at | date }}</md-card-subtitle>

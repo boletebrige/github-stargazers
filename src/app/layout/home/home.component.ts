@@ -37,7 +37,6 @@ export class HomeComponent {
           outputArr.sort(function(a, b){return b.stargazers_count- a.stargazers_count})
         });
       }
-      console.log(outputArr.length);
       this.dataLoaded = !this.dataLoaded;
     }
     onSubmit(event){
@@ -66,6 +65,7 @@ export class HomeComponent {
         //Add 'implements OnInit' to the class.
         this.getData(this.frontendArr, this.frontendData)
         this.tempData = this.frontendData;
+        console.log(this.tempData.length)
         // ############## SOLVE this MYSTERY ##############
         // this.pagedData = this.tempData.slice(0,2)
        
@@ -73,24 +73,28 @@ export class HomeComponent {
     onSelectChange = ($event: any): void => {
       // load data if isn't laoded on tab select
       if($event.index == 0){
+        this.tempData = [];
         if(!this.frontendData.length){
           this.getData(this.frontendArr,  this.frontendData)
           this.tempData = this.frontendData;
         }
         this.tempData = this.frontendData;
       }else if($event.index == 1){
+        this.tempData = [];
         if(!this.webData.length){
           this.getData(this.webArr, this.webData)
           this.tempData = this.webData;
         }
         this.tempData = this.webData;
       }else if($event.index == 2){
+        this.tempData = [];
         if(!this.gameData.length){
           this.getData(this.gameArr, this.gameData)
           this.tempData = this.gameData;
         }
         this.tempData = this.gameData;
       }else if($event.index == 3){
+        this.tempData = [];
         if(!this.editorData.length){
           this.getData(this.editorArr, this.editorData)
           this.tempData = this.editorData;

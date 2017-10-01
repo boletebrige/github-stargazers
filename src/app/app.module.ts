@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule, MdToolbarModule, MdIconModule, MdTabsModule, MdPaginatorModule, MdSnackBarModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule, MdToolbarModule, MdIconModule, MdTabsModule, MdPaginatorModule, MdSnackBarModule, MdProgressSpinnerModule } from '@angular/material';
 import { DatePipe } from '@angular/common';
 
 import { appRouting } from './app.routing';
@@ -44,7 +44,8 @@ import { RepoInput } from './layout/components/repoInput/repoInput.component';
     MdIconModule,
     MdTabsModule,
     MdPaginatorModule,
-    MdSnackBarModule
+    MdSnackBarModule, 
+    MdProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
