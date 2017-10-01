@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
+import {MdSnackBar} from '@angular/material';
+
 import { Frontend } from '../../data/frontend';
 import { Web } from '../../data/web';
 import { Game } from '../../data/game';
@@ -24,23 +26,10 @@ export class HomeComponent {
     editorArr = Editor;
     editorData = [];
     tempData = [];
-    constructor(private http: Http){
-    }
-    onSubmit(event){
-      this.http.get('https://api.github.com/repos/' + event.user + '/'+ event.repo)
-      .subscribe(data => {
-          this.tempData.push(data.json());
-          this.tempData.sort(function(a, b){return b.stargazers_count- a.stargazers_count})
-      });
-    }
-    ngOnInit() {
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
-        this.getData(this.frontendArr, this.frontendData)
-        this.tempData = this.frontendData;
+    pagedData = [];
+    constructor(private http: Http, public snackBar: MdSnackBar){
     }
     getData(inputArr, outputArr){
-
       for(let i = 0; i < inputArr.length; i++){
         this.http.get('https://api.github.com/repos/' + inputArr[i].user + '/'+ inputArr[i].repo)
         .subscribe(data => {
@@ -48,7 +37,38 @@ export class HomeComponent {
           outputArr.sort(function(a, b){return b.stargazers_count- a.stargazers_count})
         });
       }
+      console.log(outputArr.length);
       this.dataLoaded = !this.dataLoaded;
+    }
+    onSubmit(event){
+      this.http.get('https://api.github.com/repos/' + event.user + '/'+ event.repo)
+      .subscribe(data => {
+          var that = this
+          // Checks if repository is on list
+          let compare = that.tempData.find(function(el){
+            if(el.name == data.json().name){
+              return el;
+            }
+          })
+          if(compare){
+            let message = 'Repository already exists on list !'
+            let snackBarRef = that.snackBar.open(message, 'Done',  { duration: 2000, });
+          }else{
+            that.tempData.push(data.json());
+            that.tempData.sort(function(a, b){return b.stargazers_count- a.stargazers_count})
+            let message = `Repository ${ event.user }/${ event.repo } added!`
+            let snackBarRef = that.snackBar.open(message, 'Done',  { duration: 2000, });
+          }
+      });
+    }
+    ngOnInit() {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.getData(this.frontendArr, this.frontendData)
+        this.tempData = this.frontendData;
+        // ############## SOLVE this MYSTERY ##############
+        // this.pagedData = this.tempData.slice(0,2)
+       
     }
     onSelectChange = ($event: any): void => {
       // load data if isn't laoded on tab select

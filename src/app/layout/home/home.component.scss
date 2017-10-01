@@ -1,6 +1,10 @@
 .main-div {
     max-width: 980px;
     width: 100%;
-    margin: 0 auto;
+    margin: 30px auto 60px auto;
+    .add-repo-title {
+        font: 400 34px/40px Roboto,"Helvetica Neue",sans-serif;
+        margin: 0;
+    }
 }
 

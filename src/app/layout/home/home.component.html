@@ -1,6 +1,8 @@
 <div  class="main-div">
-    <h1 class="mat-display-1">Add repository to list</h1>
-    <repo-input (onRepo)="onSubmit($event)"></repo-input>
+    <md-grid-list cols="1" rowHeight="10:1">
+        <md-grid-tile colspan="1"><h1 class="add-repo-title">Add repository to list</h1></md-grid-tile>
+        <md-grid-tile colspan="1"><repo-input (onRepo)="onSubmit($event)"></repo-input></md-grid-tile>
+    </md-grid-list>
     <md-tab-group (selectChange)="onSelectChange($event)">
         <md-tab label="Frontend JS frameworks">
             <md-list-item *ngFor="let repo of tempData">

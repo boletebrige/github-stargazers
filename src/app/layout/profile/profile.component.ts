@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
+import {PageEvent} from '@angular/material';
 
 @Component({
     selector: 'app-profile',
@@ -8,8 +9,9 @@ import { Http } from '@angular/http';
 })
 
 export class ProfileComponent {
-    displayedColumns = ['name', 'html_url', 'description', 'fork'];
-    dataSource = null;
+    pageEvent: PageEvent;
+    pageSize = 10;
+    pageSizeOptions: Array<number> = [5, 10, 25, 100];
     initialProfile = 'boletebrige';
     profileData = null;
     profileRepos = null;
@@ -19,9 +21,10 @@ export class ProfileComponent {
     }
 
     ngOnInit() {
-        this.getProfile()
-     }
-    getProfile() {
+        this.getData()
+
+    }
+    getData() {
         // load profile data
         this.http.get('https://api.github.com/users/' + this.initialProfile)
         .subscribe(data => {
@@ -29,11 +32,13 @@ export class ProfileComponent {
             this.dataLoaded = true;
         });
         // load profile repos
-        this.http.get('https://api.github.com/users/' + this.initialProfile +"/repos")
+        this.http.get('https://api.github.com/users/' + this.initialProfile +'/repos')
         .subscribe(data => {
             this.profileRepos = data.json();
+            this.profileRepos.sort(function(a, b){return new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()})
             this.reposLoaded = true;
-            this.dataSource = data.json();
+            console.log(this.reposLoaded)
         });
     }
+
 }

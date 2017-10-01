@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule, MdToolbarModule, MdIconModule, MdTabsModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule, MdGridListModule, MdChipsModule, MdListModule, MdInputModule, MdToolbarModule, MdIconModule, MdTabsModule, MdPaginatorModule, MdSnackBarModule } from '@angular/material';
 import { DatePipe } from '@angular/common';
 
 import { appRouting } from './app.routing';
 import { AppComponent } from './app.component';
 import { appHeader } from './layout/components/appHeader/appHeader.component';
+import { AppFooter } from './layout/components/appFooter/appFooter.component';
 import { HomeComponent } from './layout/home/home.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { GitCard } from './layout/components/gitCard/gitCard.component';
@@ -20,6 +21,7 @@ import { RepoInput } from './layout/components/repoInput/repoInput.component';
   declarations: [
     AppComponent,
     appHeader,
+    AppFooter,
     HomeComponent,
     GitCard,
     RepoInput,
@@ -40,7 +42,9 @@ import { RepoInput } from './layout/components/repoInput/repoInput.component';
     MdInputModule,
     MdToolbarModule,
     MdIconModule,
-    MdTabsModule
+    MdTabsModule,
+    MdPaginatorModule,
+    MdSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
