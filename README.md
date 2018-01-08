@@ -1,7 +1,7 @@
 # Github Stargazers
 > Angular application that lists popular repositories from GitHub using GitHub REST API v3
 
-![Alt text](./screen.jpg?raw=true "Title")
+![Alt text](./screen.png?raw=true "Title")
 
 # Material
 
